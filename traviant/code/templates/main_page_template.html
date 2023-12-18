@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myweb-{% block subtitle %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+
+    
+
+    <div id="container">
+        <div id="top"></div>
+        <div id="left">
+      <!--       <a class="navButt" href="{{ url_for('main') }}"></a>
+            <a class="navButt" href="{{ url_for('budovy') }}"></a> --> 
+        </div>
+        <div id="mid">
+                <a  href="{{ url_for('main') }}"></a>
+                <a  href="{{ url_for('budovy') }}"></a>
+                {% block main %}{% endblock %}
+            </div>
+        <div id="right">
+     <!--        <a class="navButt" href="{{ url_for('main') }}"></a>
+            <a class="navButt" href="{{ url_for('budovy') }}"></a>  --> 
+        </div>
+    
+    </div>
+
+    <div id="bg1"></div>
+    <div id="bg2" ></div>
+    <div id="bg3"></div>
+
+<script>
+    window.addEventListener('scroll', function() {
+ let scrollPosition = window.pageYOffset;
+  
+ // Apply parallax to bg1
+ let bg1 = document.getElementById('bg1');
+ bg1.style.transform = 'translateY(' + (-scrollPosition * 0.4) + 'px)';
+  
+ // Apply parallax to bg2
+ let bg2 = document.getElementById('bg2');
+ bg2.style.transform = 'translateY(' + (-scrollPosition * 0.2) + 'px)';
+  
+ // Apply parallax to bg3
+ //let bg3 = document.getElementById('bg3');
+// bg3.style.transform = 'translateY(' + (-scrollPosition * -0.1) + 'px)';
+});
+</script>
+
+</body>
+</html>
+

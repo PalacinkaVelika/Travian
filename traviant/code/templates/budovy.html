@@ -1,0 +1,24 @@
+{% extends "main_page_template.html" %}
+
+{% block subtitle %}
+Budovy
+{% endblock %}
+
+{% block main %}
+<p>hlavní block</p><br>
+<h1>Budovy</h1>
+Lorem<br>
+Lorem<br>
+Lorem<br>
+Lorem<br>
+<form action="/budovy" method="post">
+    <fieldset>
+        <label for="username">Your name: </label>
+        <input type="text" name="username" required>
+        <label for="review">Your review: </label>
+        <input type="text" name="review" required>
+    </fieldset>
+    <button type="submit">Send review</button>
+</form>
+
+{% endblock %}

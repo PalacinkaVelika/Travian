@@ -1,0 +1,26 @@
+{% extends "login_page_template.html" %}
+
+{% block subtitle %}
+Hlavní strana
+{% endblock %}
+
+{% block main %}
+<form action="/login" method="post">
+    <fieldset>
+        <label for="username">Login: </label><br>
+        <input type="text" name="username" required><br>
+        <label for="review">Heslo: </label><br>
+        <input type="password" name="password" required>
+    </fieldset>
+    <button type="submit">Přihlásit se</button>
+</form>
+<a href="{{ url_for('register') }}">Registrovat se</a><br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+                {{ message }}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% endblock %}

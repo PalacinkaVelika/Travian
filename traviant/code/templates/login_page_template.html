@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myweb-{% block subtitle %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div id="top"></div>
+    <div id="left">
+    </div>
+    <div id="mid">
+        {% block main %}{% endblock %}
+    </div>
+    <div id="right">
+    </div>
+</body>
+</html>
+
