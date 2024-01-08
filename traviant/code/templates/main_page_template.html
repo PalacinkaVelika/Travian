@@ -8,11 +8,18 @@
 </head>
 <body>
 
-
+<!--   <a href=# id=test>Log out</a> <!--Button for callin py function without refresh -->
     
 
     <div id="container">
-        <div id="top"></div>
+        <div id="top">
+            <div class="navButt">
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+            <div class="navButt">
+                    Tady zatím nic není
+            </div>
+        </div>
         <div id="left">
       <!--       <a class="navButt" href="{{ url_for('main') }}"></a>
             <a class="navButt" href="{{ url_for('budovy') }}"></a> --> 
@@ -49,6 +56,20 @@
  //let bg3 = document.getElementById('bg3');
 // bg3.style.transform = 'translateY(' + (-scrollPosition * -0.1) + 'px)';
 });
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#test').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/background_process_test',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
 </script>
 
 </body>
