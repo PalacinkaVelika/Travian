@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myweb-{% block subtitle %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            perspective: none;
+            transform-style: flat;
+        }
+    </style>
 </head>
 <body>
-
-    <div id="top"></div>
-    <div id="left">
-    </div>
-    <div id="mid">
+    <div id="loginMain" style="height: 80vh;">
         {% block main %}{% endblock %}
     </div>
-    <div id="right">
-    </div>
+    <div id="loginBg"></div>
 </body>
 </html>
 

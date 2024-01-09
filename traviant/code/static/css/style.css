@@ -8,6 +8,29 @@ body {
     perspective: 1px;
     transform-style: preserve-3d;
 }
+#loginBg{
+    background-image: url("../images/BigLoginBg.jpg");
+    background-size: cover;
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -10;
+}
+#loginMain{
+    background-color: #deb93e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    width: 50vw;
+    height: 200vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 #container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -48,7 +71,7 @@ body {
     text-decoration: none;
 }
 #left, #right {
-    background-color: #217f2200;
+    background-color: #217f2300;
     color: white;
     padding: 20px;
     text-align: center;

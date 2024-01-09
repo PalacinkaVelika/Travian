@@ -4,19 +4,19 @@ import bcrypt
 import time
 from DB import DB
 from Accounts import Accounts
+from City import City
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = '745821ba1c21a450ec16b1c325876248eef69a10'
 
-# DB STUFF
-
-#mongo_client = pymongo.MongoClient("mongodb://localhost:27017", connect=True)
-#db = mongo_client['traviant'] # Databáze
-#account_collections = db['accounts']  # Table
-#account_collections.insert_one(register_data)# Upload data
 db = DB()
 accounts = Accounts()
 accounts.load_collection(db)
+city = City()
+city.load_collection(db)
+
+# vrací Cursor a ne Dictionary
+city_list = list(city.region_cities(0))
 
 @app.route("/")
 @app.route("/home")
@@ -24,6 +24,7 @@ accounts.load_collection(db)
 def main():
     if 'logged_in' not in session or session['logged_in'] is None:
         return redirect(url_for("login"))
+    city.create_new_city(0,0)
     return render_template("main.html", logged_in = session['logged_in'])
 
 @app.route("/login", methods=["GET","POST"])
@@ -31,11 +32,6 @@ def login():
     if request.method == "POST":
         name = request.form.get("username")
         password = request.form.get("password")
-  #      user = account_collections.find_one({"login": name})
-   #     if user:
-    #        if bcrypt.checkpw(password.encode("utf-8"), user["heslo"]):
-     #          session['logged_in'] = True
-      #          return redirect(url_for("main"))
         if accounts.login_user(name, password):
             session['logged_in'] = True
             return redirect(url_for("main"))
@@ -47,29 +43,22 @@ def register():
     if request.method == "POST":
         name = request.form.get("username")
         password = request.form.get("password")
-        hashed_password = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-        register_data = {
-                "login" : name,
-                "heslo" : hashed_password
-        }
-        '''
-        insert_result = account_collections.insert_one(register_data)
-        if insert_result.inserted_id:
-            #success
+        if accounts.register_new_user(name, password):
             flash('User registered successfully!')
             return redirect(url_for('login'))
         else:
-            #fail
-            flash('Error while saving to the database')
-        '''
+            flash('Error while saving to the database.')
     return render_template("register.html")
 
-@app.route("/budovy")
-def budovy():
+@app.route("/cities")
+def cities():
     if 'logged_in' not in session or session['logged_in'] is None:
         return redirect(url_for("login")) 
     
-    return render_template("budovy.html")
+
+    return render_template("cities.html", city_list = city_list)
+
+
 
 
 

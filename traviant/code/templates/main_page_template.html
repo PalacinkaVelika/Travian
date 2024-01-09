@@ -17,27 +17,23 @@
                 <a href="{{ url_for('logout') }}">Logout</a>
             </div>
             <div class="navButt">
-                    Tady zatím nic není
+                <a href="{{ url_for('cities') }}">Mapa měst</a>
             </div>
         </div>
         <div id="left">
-      <!--       <a class="navButt" href="{{ url_for('main') }}"></a>
-            <a class="navButt" href="{{ url_for('budovy') }}"></a> --> 
+      <!--       <a class="navButt" href="{{ url_for('main') }}"></a>--> 
         </div>
         <div id="mid">
-                <a  href="{{ url_for('main') }}"></a>
-                <a  href="{{ url_for('budovy') }}"></a>
                 {% block main %}{% endblock %}
             </div>
         <div id="right">
-     <!--        <a class="navButt" href="{{ url_for('main') }}"></a>
-            <a class="navButt" href="{{ url_for('budovy') }}"></a>  --> 
+     <!--        <a class="navButt" href="{{ url_for('main') }}"></a> --> 
         </div>
     
     </div>
 
     <div id="bg1"></div>
-    <div id="bg2" ></div>
+    <div id="bg2"></div>
     <div id="bg3"></div>
 
 <script>
