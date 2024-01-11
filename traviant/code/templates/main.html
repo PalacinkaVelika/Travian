@@ -5,11 +5,34 @@ Přehled
 {% endblock %}
 
 {% block main %}
-Logged in: {% print(logged_in) %}
-<p>hlavní block</p><br>
+Logged in: {% print(player_id) %}
 <h1>Přehled</h1>
-Lorem<br>
-Lorem<br>
-Lorem<br>
-Lorem<br>
+<h2> Pozice </h2>
+Region: <br>
+Průzkumnická jednotka(x): <br>
+<h2> Suroviny </h2>
+Uhlí: {% current_city['resources']['coal'] %} <br>
+Ruda: {% current_city['resources']['ore'] %} <br>
+Energie: {% current_city['resources']['energy'] %} <br>
+<h1> Budovy </h1>
+<h2> Doly </h2>
+Children yearn for those (Uhlí): <br>
+Ostrava (Ruda): <br>
+Pece (Energie): <br>
+<h2> Kasárny </h2>
+Posilovna (pěchota): <br>
+Továrna (tanky): <br>
+Akademie (anti-tanky): <br>
+<h1> Města </h1>
+
+{% for city in player_cities %}
+-----------------------------------------------------<br>
+    Region: {{ city["position"]["region"] }}<br>
+    X: {{ city["position"]["x"] }}<br>
+    Coal: {{ city['resources']['coal'] }}<br>
+    Ore: {{ city['resources']['ore'] }}<br>
+    Energy: {{ city['resources']['energy'] }}<br>
+-----------------------------------------------------<br>
+{% endfor %}
+
 {% endblock %}
