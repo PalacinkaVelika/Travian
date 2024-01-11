@@ -51,13 +51,6 @@ def login():
         session['logged_in_id'] = str(accounts.find_user_id(name, password))
         if session['logged_in_id'] != "None":
             # Předtím než tě hodím na main site tak nastavím session vars pro přihlášeného uživatele
-            print("hej")
-            print("hej")
-            print("hej")
-            print("hej")
-            print("hej")
-            print("hej")
-            print(type(city.player_cities(session['logged_in_id'])))
             session['player_cities'] = city.player_cities(session['logged_in_id'])
             session['current_city'] = session['player_cities'][0]
             return redirect(url_for("main"))
@@ -86,7 +79,7 @@ def cities():
         return lgchk
     
 
-    return render_template("cities.html", city_list = city_list)
+    return render_template("cities.html")
 
 
 

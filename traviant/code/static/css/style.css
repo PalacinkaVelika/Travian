@@ -3,11 +3,11 @@ html{
 }
 body {
     width: 100%;
+    min-height: 100vh;
     margin: 0;
     background-color: rgb(0, 0, 0);
-    perspective: 1px;
-    transform-style: preserve-3d;
 }
+
 #loginBg{
     background-image: url("../images/BigLoginBg.jpg");
     background-size: cover;
@@ -92,7 +92,8 @@ body {
     text-align: center;
     font-size: 20px;
     width: 50vw;
-    height: 200vh;
+    min-height: 200vh;
+    height: fit-content;
     margin-left: 2vw;
     margin-top: 20vh;
 }
@@ -136,8 +137,149 @@ body {
     top: 150vh; 
     left: 0; 
     width: 100%; 
-    height: 137vh; 
+    height: 137vh; /*137*/ 
     background-image: url("../images/undercity.jpg");
     background-size: cover;
     z-index: -10;
 }
+/*** Resources ***/
+.resources-container {
+    position: sticky;
+    bottom: 0;
+    z-index: 99;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 600px) {
+ .resources-container {
+    flex-direction: column;
+ }
+}
+
+.resources-background {
+    background-color: rgba(50, 0, 69, 0);
+    height: 100%;
+    min-width: 60vw;
+    max-width: fit-content;
+    justify-content: center;
+    display: flex;
+}
+@media (max-width: 600px) {
+    .resources-background {
+       flex-direction: column;
+    }
+   }
+.resources-box {
+    background-color: rgb(54, 54, 54);
+    height: 7vh;
+    min-width: 20vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 3px black;
+}
+
+.resources-icon { 
+    height: 100%;
+    max-width: 120px;
+    aspect-ratio: 1/1;
+    border: solid 3px black;
+}
+.resources-text2 {
+    background-color: #2a0138;
+    height: 100%;
+    width: 100%;
+    font-size: 5vh;
+    text-align: center;
+}
+#coal-icon{
+    background-image: url("../images/iconCoal.png");
+    background-size: cover;
+}
+#ore-icon{
+    background-image: url("../images/iconOre.png");
+    background-size: cover;
+}
+#energy-icon{
+    background-image: url("../images/iconEnergy.png");
+    background-size: cover;
+}
+/******************************************/
+
+/*** Mines ***/
+    .mines-main-container {
+        background-color: rgb(36, 0, 45);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+        width: 100%;
+    }
+   
+   .mines-content-box {
+    background-color: rgb(80, 0, 100);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 2%;
+    width: 98%;
+    height: 400px;
+   }
+   @media (max-width: 600px) {
+    .mines-content-box {
+       flex-direction: column;
+       height: fit-content;
+    }
+   }
+   .mines-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    aspect-ratio: 1/1;
+    border: solid 3px black;
+    min-width: 25%;
+   }
+   
+   .mines-icon-container img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/iconDoly.png");
+    background-size: cover;
+   }
+   .mines-description {
+    background-color: rgba(159, 27, 192, 0);
+    height: 100%;
+    width: 70%;
+    box-sizing: border-box;
+   }
+   .mines-description p{
+    padding: 5%;
+    text-align: left;
+   }
+   
+   .mines-button-container {
+    background-color: rgba(110, 0, 138, 0);
+    width: 5%;
+    height: 100%;
+   }
+   
+   button {
+    width: 50px;
+    aspect-ratio: 1/1;
+    background-color: #fff200;
+    color: rgb(0, 0, 0);
+    font-size: 100%;
+    font-weight: bolder;
+    border: solid 3px black;
+    cursor: pointer;
+    overflow: hidden;
+   }
+/******************************************/

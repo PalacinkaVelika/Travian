@@ -9,7 +9,7 @@
 <body>
 
 <!--   <a href=# id=test>Log out</a> <!--Button for callin py function without refresh -->
-    
+    <div id="kokotina"></div>
 
     <div id="container">
         <div id="top">
@@ -23,21 +23,43 @@
                 <a href="{{ url_for('cities') }}">Mapa měst</a>
             </div>
         </div>
+
         <div id="left">
       <!--       <a class="navButt" href="{{ url_for('main') }}"></a>--> 
         </div>
+
         <div id="mid">
                 {% block main %}{% endblock %}
-            </div>
+        </div>
+
         <div id="right">
      <!--        <a class="navButt" href="{{ url_for('main') }}"></a> --> 
         </div>
     
     </div>
 
+
     <div id="bg1"></div>
     <div id="bg2"></div>
-    <div id="bg3"></div>
+   <div id="bg3"></div>
+
+    <div class="resources-container">
+        <div class="resources-background">
+            <div class="resources-box">
+                <img class="resources-icon" id="coal-icon">
+                <div class="resources-text2">{% block coal %}{% endblock %}</div>
+            </div>
+            <div class="resources-box">
+                <img class="resources-icon" id="ore-icon">
+                <div class="resources-text2">{% block ore %}{% endblock %}</div>
+            </div>
+            <div class="resources-box">
+                <img class="resources-icon" id="energy-icon">
+                <div class="resources-text2">{% block energy %}{% endblock %}</div>
+            </div>
+        </div>
+    </div>
+    
 
 <script>
     window.addEventListener('scroll', function() {

@@ -73,14 +73,18 @@ class City:
 
     def player_cities(self, owner_id):
         cities_cursor = self._account_collection.find({"owner": ObjectId(owner_id)})
-        '''
+        
         cities_list = list(cities_cursor)
-        for city in cities_cursor:
-             for key, value in record.items():
+        
+        for city in cities_list:
+            # Iterate over each key-value pair in the city dictionary
+            for key, value in city.items():
+                # If the value is an ObjectId instance, convert it to a string
                 if isinstance(value, ObjectId):
-                    record[key] = str(value)
+                    city[key] = str(value)
+                    
         print(cities_list)
-        '''
+        
         return cities_list
     
     def region_cities(self, region):

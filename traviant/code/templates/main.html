@@ -3,6 +3,17 @@
 {% block subtitle %}
 Přehled
 {% endblock %}
+<!--Resource bar-->
+{% block coal %}
+{% print(current_city['resources']['coal']) %}
+{% endblock %}
+{% block ore %}
+{% print(current_city['resources']['ore']) %}
+{% endblock %}
+{% block energy %}
+{% print(current_city['resources']['energy']) %}
+{% endblock %}
+
 
 {% block main %}
 Logged in: {% print(player_id) %}
@@ -10,19 +21,95 @@ Logged in: {% print(player_id) %}
 <h2> Pozice </h2>
 Region: <br>
 Průzkumnická jednotka(x): <br>
-<h2> Suroviny </h2>
-Uhlí: {% current_city['resources']['coal'] %} <br>
-Ruda: {% current_city['resources']['ore'] %} <br>
-Energie: {% current_city['resources']['energy'] %} <br>
 <h1> Budovy </h1>
 <h2> Doly </h2>
-Children yearn for those (Uhlí): <br>
-Ostrava (Ruda): <br>
-Pece (Energie): <br>
+<div class="mines-main-container">
+       <div class="mines-content-box">
+            <div class="mines-icon-container">
+                <img>
+            </div>
+            <div class="mines-description">
+                <h1>Doly na uhlí</h1>
+                <p>
+                    Tady se těží uhlí. Děti tu rády pracují. Uhlí pohání všechny budovy a stroje. 
+                    Uhlí se spaluje v pecích pro tvorbu energie.
+                </p>
+            </div>
+            <div class="mines-button-container">
+                <button>+</button>
+            </div>
+       </div>
+   
+        <div class="mines-content-box">
+            <div class="mines-icon-container">
+                <img>
+            </div>
+            <div class="mines-description">
+                <h1>Doly na rudu</h1>
+                <p>Tady se těží ruda. Ruda je základ každé stavby a produktu.</p>
+            </div>
+            <div class="mines-button-container">
+                <button>+</button>
+            </div>
+        </div>
+   
+        <div class="mines-content-box">
+            <div class="mines-icon-container">
+                <img>
+            </div>
+            <div class="mines-description">
+                <h1>Velká pec</h1>
+                <p>Tady se spaluje odpad z celého města pro tvorbu energie. Energie v podobě páry pohání většinu věcí ve městě.</p>
+            </div>
+            <div class="mines-button-container">
+                <button>+</button>
+            </div>
+        </div>
+</div>
 <h2> Kasárny </h2>
-Posilovna (pěchota): <br>
-Továrna (tanky): <br>
-Akademie (anti-tanky): <br>
+<div class="mines-main-container">
+    <div class="mines-content-box">
+         <div class="mines-icon-container">
+             <img>
+         </div>
+         <div class="mines-description">
+             <h1>Posilovna</h1>
+             <p>
+                 Tady se těží uhlí. Děti tu rády pracují. Uhlí pohání všechny budovy a stroje. 
+                 Uhlí se spaluje v pecích pro tvorbu energie.
+             </p>
+         </div>
+         <div class="mines-button-container">
+             <button>+</button>
+         </div>
+    </div>
+
+     <div class="mines-content-box">
+         <div class="mines-icon-container">
+             <img>
+         </div>
+         <div class="mines-description">
+             <h1>Strojírna</h1>
+             <p>Tady se těží ruda. Ruda je základ každé stavby a produktu.</p>
+         </div>
+         <div class="mines-button-container">
+             <button>+</button>
+         </div>
+     </div>
+
+     <div class="mines-content-box">
+         <div class="mines-icon-container">
+             <img>
+         </div>
+         <div class="mines-description">
+             <h1>Akademie</h1>
+             <p>Tady se spaluje odpad z celého města pro tvorbu energie. Energie v podobě páry pohání většinu věcí ve městě.</p>
+         </div>
+         <div class="mines-button-container">
+             <button>+</button>
+         </div>
+     </div>
+</div>
 <h1> Města </h1>
 
 {% for city in player_cities %}
