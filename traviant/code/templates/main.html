@@ -27,86 +27,93 @@ Průzkumnická jednotka(x): <br>
        <div class="mines-content-box">
             <div class="mines-icon-container">
                 <img>
+                <div class="mines-button-container">
+                    <div class="build-button">Vylepšit</div>
+                </div>
             </div>
             <div class="mines-description">
                 <h1>Doly na uhlí</h1>
+                <h2>Úroveň: {% print(current_city['mine_levels']['coal']) %}</h2>
                 <p>
                     Tady se těží uhlí. Děti tu rády pracují. Uhlí pohání všechny budovy a stroje. 
                     Uhlí se spaluje v pecích pro tvorbu energie.
                 </p>
-            </div>
-            <div class="mines-button-container">
-                <button>+</button>
+                
             </div>
        </div>
    
         <div class="mines-content-box">
             <div class="mines-icon-container">
                 <img>
+                <div class="mines-button-container">
+                    <div class="build-button">Vylepšit</div>
+                </div>
             </div>
             <div class="mines-description">
                 <h1>Doly na rudu</h1>
+                <h2>Úroveň: {% print(current_city['mine_levels']['ore']) %}</h2>
                 <p>Tady se těží ruda. Ruda je základ každé stavby a produktu.</p>
-            </div>
-            <div class="mines-button-container">
-                <button>+</button>
             </div>
         </div>
    
         <div class="mines-content-box">
             <div class="mines-icon-container">
                 <img>
+                <div class="mines-button-container">
+                    <div class="build-button">Vylepšit</div>
+                </div>
             </div>
             <div class="mines-description">
                 <h1>Velká pec</h1>
+                <h2>Úroveň: {% print(current_city['mine_levels']['energy']) %}</h2>
                 <p>Tady se spaluje odpad z celého města pro tvorbu energie. Energie v podobě páry pohání většinu věcí ve městě.</p>
-            </div>
-            <div class="mines-button-container">
-                <button>+</button>
             </div>
         </div>
 </div>
 <h2> Kasárny </h2>
 <div class="mines-main-container">
     <div class="mines-content-box">
-         <div class="mines-icon-container">
-             <img>
-         </div>
+        <div class="mines-icon-container">
+            <img>
+            <div class="mines-button-container">
+                <div class="build-button">Vylepšit</div>
+            </div>
+        </div>
          <div class="mines-description">
-             <h1>Posilovna</h1>
+             <h1>Akademie-Posilovna</h1>
+             <h2>Úroveň: {% print(current_city['barracks_levels']['academy']) %}</h2>
              <p>
                  Tady se těží uhlí. Děti tu rády pracují. Uhlí pohání všechny budovy a stroje. 
                  Uhlí se spaluje v pecích pro tvorbu energie.
              </p>
          </div>
-         <div class="mines-button-container">
-             <button>+</button>
-         </div>
     </div>
 
      <div class="mines-content-box">
-         <div class="mines-icon-container">
-             <img>
-         </div>
+        <div class="mines-icon-container">
+            <img>
+            <div class="mines-button-container">
+                <div class="build-button">Vylepšit</div>
+            </div>
+        </div>
          <div class="mines-description">
              <h1>Strojírna</h1>
+             <h2>Úroveň: {% print(current_city['barracks_levels']['machinery']) %}</h2>
              <p>Tady se těží ruda. Ruda je základ každé stavby a produktu.</p>
-         </div>
-         <div class="mines-button-container">
-             <button>+</button>
          </div>
      </div>
 
      <div class="mines-content-box">
-         <div class="mines-icon-container">
-             <img>
-         </div>
+        <div class="mines-icon-container">
+            <img>
+            <div class="mines-button-container">
+                <div class="build-button">Vylepšit</div>
+            </div>
+        </div>
          <div class="mines-description">
-             <h1>Akademie</h1>
+             <h1>Specialisté</h1>
+             <h2>Úroveň: {% print(current_city['barracks_levels']['specialists']) %}</h2>
              <p>Tady se spaluje odpad z celého města pro tvorbu energie. Energie v podobě páry pohání většinu věcí ve městě.</p>
-         </div>
-         <div class="mines-button-container">
-             <button>+</button>
          </div>
      </div>
 </div>
