@@ -65,9 +65,7 @@ body {
     display: flex;
     justify-content: center; /* Horizontal alignment */
     align-items: center;
-}
-.navButt a{
-    color: inherit;
+    color: white;
     text-decoration: none;
 }
 #left, #right {
@@ -285,5 +283,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
    }
 /******************************************/

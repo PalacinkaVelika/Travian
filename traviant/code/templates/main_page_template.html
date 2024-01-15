@@ -9,19 +9,12 @@
 <body>
 
 <!--   <a href=# id=test>Log out</a> <!--Button for callin py function without refresh -->
-    <div id="kokotina"></div>
 
     <div id="container">
         <div id="top">
-            <div class="navButt">
-                <a href="{{ url_for('logout') }}">Logout</a>
-            </div>
-            <div class="navButt">
-                <a href="{{ url_for('main') }}">Main page</a>
-            </div>
-            <div class="navButt">
-                <a href="{{ url_for('cities') }}">Mapa měst</a>
-            </div>
+            <a href="{{ url_for('logout') }}" class="navButt">Logout</a>
+            <a href="{{ url_for('main') }}" class="navButt">Main page</a>      
+            <a href="{{ url_for('cities') }}" class="navButt">Mapa měst</a>
         </div>
 
         <div id="left">

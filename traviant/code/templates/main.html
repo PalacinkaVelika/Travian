@@ -28,7 +28,7 @@ Průzkumnická jednotka(x): <br>
             <div class="mines-icon-container">
                 <img>
                 <div class="mines-button-container">
-                    <div class="build-button">Vylepšit</div>
+                    <a href="{{ url_for('upgrade_building', building_type='coal') }}" class="build-button">Vylepšit</a>
                 </div>
             </div>
             <div class="mines-description">
@@ -46,7 +46,7 @@ Průzkumnická jednotka(x): <br>
             <div class="mines-icon-container">
                 <img>
                 <div class="mines-button-container">
-                    <div class="build-button">Vylepšit</div>
+                    <a href="{{ url_for('upgrade_building', building_type='ore') }}" class="build-button">Vylepšit</a>
                 </div>
             </div>
             <div class="mines-description">
@@ -60,7 +60,7 @@ Průzkumnická jednotka(x): <br>
             <div class="mines-icon-container">
                 <img>
                 <div class="mines-button-container">
-                    <div class="build-button">Vylepšit</div>
+                    <a href="{{ url_for('upgrade_building', building_type='energy') }}" class="build-button">Vylepšit</a>
                 </div>
             </div>
             <div class="mines-description">

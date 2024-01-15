@@ -1,0 +1,46 @@
+//Table for managing time based shit 
+
+//Hej uživatel může jen jednu věc JEDNOHO TYPU najednou + žádná fronta ! takže každý user by mohl mít valstní record tady?
+
+
+// Pro frontu měst pro budova / vojsko / výzkum
+{
+    city_id: "sas4d5f15a3sd1fasd3f51s32agdf0",
+    building_record {
+        building_type: 0,
+        count_start: 2024_01_25 19:14:10,
+        count_finish: 2024_01_25 20:14:10
+    },
+    soldier_record {
+        soldier_type: 0,
+        count: 0, # how many soldiers you should have at the count finish - important for lazy shit calculations
+        count_start: 2024_01_25 19:14:10,
+        count_finish: 2024_01_25 20:14:10
+    },
+    building_record {
+        research_type: 0,
+        count_start: 2024_01_25 19:14:10,
+        count_finish: 2024_01_25 20:14:10
+    }
+}
+
+//Pro útoky co se dějí
+//Při útoku checknu pro levely výzkumu a tak do obou měst, pro počty obránců taky do města
+{
+    attacker_city_id: "asd464asd4asd1asd13asd132a132sd8"
+    defender_city_id: "asd464asd4asd1asd13asd132a132sd9"
+    count_start: 2024_01_25 19:14:10,
+    count_finish: 2024_01_25 20:14:10
+    attacker_soldiers{
+        "soldier": {
+            "count": 0
+        },
+        "tank": {
+            "count": 0
+        },
+        "anti-tank": {
+            "count": 0
+        }
+    }
+}
+
