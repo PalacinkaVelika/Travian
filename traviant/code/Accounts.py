@@ -28,6 +28,11 @@ class Accounts:
             return True
         return None
     
+    # True if there is 1 or more record in cursor, False if there is 0 records in cursor
+    def check_existing_user(self, name):
+        cursor = self._collection.find_one({'login': name})
+        return cursor is not None
+
     def update_user_score(self, user_id, city_manager_instance):
         calculated_score = 0
         # for each players city add x points
@@ -68,6 +73,9 @@ class Accounts:
         redis_manager.set(redis_key, json.dumps(top_players_list), expiration=3600)
         return top_players_list
 
+    def total_players(self):
+        return self._collection.count_documents({})
+    
     def redis_json_support(self, data):
         return [ {
                 'login': record['login'],

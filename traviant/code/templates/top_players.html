@@ -9,7 +9,7 @@ Města
 
 <h1>Top hráči</h1>
 
-<table>
+<table class="player-table">
     <tr>
         <th>Pozice</th>
         <th>Jméno</th>
@@ -17,10 +17,20 @@ Města
     </tr>
     {% for player in player_list %}
     <tr>
+        <th>{{ (start_position) + (loop.index) }}</th>
         <th>{{player['login']}}</th>
         <th>{{player['score']}}</th>
     </tr>
     {% endfor %}
 </table>
+
+<div id="top-switch">
+    {% if page_number > 1 %}
+        <a href="{{ url_for('top_players', page_number=page_number - 1) }}">Previous</a>
+    {% endif %}
+    {% if page_number * page_size < total_players %}
+        <a href="{{ url_for('top_players', page_number=page_number + 1) }}">Next</a>
+    {% endif %}
+</div>
 
 {% endblock %}

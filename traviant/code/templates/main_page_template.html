@@ -86,6 +86,21 @@
           });
         });
 
+        function update_resource_info() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/visual_resource_update', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    document.getElementById('coal-resource-info').innerHTML = data["coal"];
+                    document.getElementById('ore-resource-info').innerHTML = data["ore"];
+                    document.getElementById('energy-resource-info').innerHTML = data["energy"];
+                }
+            };
+            xhr.send();
+        }
+        update_resource_info()
+        setInterval(update_resource_info, 5000);
 </script>
 
 </body>

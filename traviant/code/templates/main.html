@@ -10,7 +10,7 @@ Přehled
 <div class="mines-main-container">
        <div class="mines-content-box">
             <div class="mines-icon-container">
-                <img>
+                <img id="doly1">
                 <div class="mines-button-container">
                     <a href="{{ url_for('upgrade_building', building_type='coal') }}" class="build-button">Vylepšit</a>
                 </div>
@@ -29,7 +29,7 @@ Přehled
    
         <div class="mines-content-box">
             <div class="mines-icon-container">
-                <img>
+                <img id="doly2">
                 <div class="mines-button-container">
                     <a href="{{ url_for('upgrade_building', building_type='ore') }}" class="build-button">Vylepšit</a>
                 </div>
@@ -44,7 +44,7 @@ Přehled
    
         <div class="mines-content-box">
             <div class="mines-icon-container">
-                <img>
+                <img id="doly3">
                 <div class="mines-button-container">
                     <a href="{{ url_for('upgrade_building', building_type='energy') }}" class="build-button">Vylepšit</a>
                 </div>
@@ -82,21 +82,6 @@ Přehled
         setInterval(check_building_status, 5000);
 
 
-        function update_resource_info() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/visual_resource_update', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var data = JSON.parse(xhr.responseText);
-                    document.getElementById('coal-resource-info').innerHTML = data["coal"];
-                    document.getElementById('ore-resource-info').innerHTML = data["ore"];
-                    document.getElementById('energy-resource-info').innerHTML = data["energy"];
-                }
-            };
-            xhr.send();
-        }
-        update_resource_info()
-        setInterval(update_resource_info, 5000);
-
+       
 </script>
 {% endblock %}
