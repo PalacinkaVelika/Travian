@@ -14,7 +14,7 @@
         <div id="top">
             <a href="{{ url_for('logout') }}" class="navButt">Logout</a>
             <a href="{{ url_for('main') }}" class="navButt">Main page</a>      
-            <a href="{{ url_for('cities') }}" class="navButt">Mapa měst</a>
+            <a href="{{ url_for('top_players', page_number=1) }}" class="navButt">Top hráči</a>
         </div>
 
         <div id="left">
@@ -40,20 +40,21 @@
         <div class="resources-background">
             <div class="resources-box">
                 <img class="resources-icon" id="coal-icon">
-                <div class="resources-text2">{% block coal %}{% endblock %}</div>
+                <div class="resources-text2" id="coal-resource-info">0</div>
             </div>
             <div class="resources-box">
                 <img class="resources-icon" id="ore-icon">
-                <div class="resources-text2">{% block ore %}{% endblock %}</div>
+                <div class="resources-text2" id="ore-resource-info">0</div>
             </div>
             <div class="resources-box">
                 <img class="resources-icon" id="energy-icon">
-                <div class="resources-text2">{% block energy %}{% endblock %}</div>
+                <div class="resources-text2" id="energy-resource-info">0</div>
             </div>
         </div>
     </div>
     
-
+{% block extra_scripts %}
+{% endblock %}
 <script>
     window.addEventListener('scroll', function() {
  let scrollPosition = window.pageYOffset;
@@ -84,6 +85,7 @@
             return false;
           });
         });
+
 </script>
 
 </body>

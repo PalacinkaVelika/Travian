@@ -3,26 +3,10 @@
 {% block subtitle %}
 Přehled
 {% endblock %}
-<!--Resource bar-->
-{% block coal %}
-{% print(current_city['resources']['coal']) %}
-{% endblock %}
-{% block ore %}
-{% print(current_city['resources']['ore']) %}
-{% endblock %}
-{% block energy %}
-{% print(current_city['resources']['energy']) %}
-{% endblock %}
 
 
 {% block main %}
-Logged in: {% print(player_id) %}
-<h1>Přehled</h1>
-<h2> Pozice </h2>
-Region: <br>
-Průzkumnická jednotka(x): <br>
-<h1> Budovy </h1>
-<h2> Doly </h2>
+<h1>Doly</h1>
 <div class="mines-main-container">
        <div class="mines-content-box">
             <div class="mines-icon-container">
@@ -34,6 +18,7 @@ Průzkumnická jednotka(x): <br>
             <div class="mines-description">
                 <h1>Doly na uhlí</h1>
                 <h2>Úroveň: {% print(current_city['mine_levels']['coal']) %}</h2>
+                <div class="building-info" id="info-coal"></div>
                 <p>
                     Tady se těží uhlí. Děti tu rády pracují. Uhlí pohání všechny budovy a stroje. 
                     Uhlí se spaluje v pecích pro tvorbu energie.
@@ -52,6 +37,7 @@ Průzkumnická jednotka(x): <br>
             <div class="mines-description">
                 <h1>Doly na rudu</h1>
                 <h2>Úroveň: {% print(current_city['mine_levels']['ore']) %}</h2>
+                <div class="building-info" id="info-ore"></div>
                 <p>Tady se těží ruda. Ruda je základ každé stavby a produktu.</p>
             </div>
         </div>
@@ -66,67 +52,51 @@ Průzkumnická jednotka(x): <br>
             <div class="mines-description">
                 <h1>Velká pec</h1>
                 <h2>Úroveň: {% print(current_city['mine_levels']['energy']) %}</h2>
+                <div class="building-info" id="info-energy"></div>
                 <p>Tady se spaluje odpad z celého města pro tvorbu energie. Energie v podobě páry pohání většinu věcí ve městě.</p>
             </div>
         </div>
 </div>
-<h2> Kasárny </h2>
-<div class="mines-main-container">
-    <div class="mines-content-box">
-        <div class="mines-icon-container">
-            <img>
-            <div class="mines-button-container">
-                <div class="build-button">Vylepšit</div>
-            </div>
-        </div>
-         <div class="mines-description">
-             <h1>Akademie-Posilovna</h1>
-             <h2>Úroveň: {% print(current_city['barracks_levels']['academy']) %}</h2>
-             <p>
-                 Tady se těží uhlí. Děti tu rády pracují. Uhlí pohání všechny budovy a stroje. 
-                 Uhlí se spaluje v pecích pro tvorbu energie.
-             </p>
-         </div>
-    </div>
 
-     <div class="mines-content-box">
-        <div class="mines-icon-container">
-            <img>
-            <div class="mines-button-container">
-                <div class="build-button">Vylepšit</div>
-            </div>
-        </div>
-         <div class="mines-description">
-             <h1>Strojírna</h1>
-             <h2>Úroveň: {% print(current_city['barracks_levels']['machinery']) %}</h2>
-             <p>Tady se těží ruda. Ruda je základ každé stavby a produktu.</p>
-         </div>
-     </div>
 
-     <div class="mines-content-box">
-        <div class="mines-icon-container">
-            <img>
-            <div class="mines-button-container">
-                <div class="build-button">Vylepšit</div>
-            </div>
-        </div>
-         <div class="mines-description">
-             <h1>Specialisté</h1>
-             <h2>Úroveň: {% print(current_city['barracks_levels']['specialists']) %}</h2>
-             <p>Tady se spaluje odpad z celého města pro tvorbu energie. Energie v podobě páry pohání většinu věcí ve městě.</p>
-         </div>
-     </div>
-</div>
-<h1> Města </h1>
+{% endblock %}
 
-{% for city in player_cities %}
------------------------------------------------------<br>
-    Region: {{ city["position"]["region"] }}<br>
-    X: {{ city["position"]["x"] }}<br>
-    Coal: {{ city['resources']['coal'] }}<br>
-    Ore: {{ city['resources']['ore'] }}<br>
-    Energy: {{ city['resources']['energy'] }}<br>
------------------------------------------------------<br>
-{% endfor %}
+{% block extra_scripts %}
+<script>
+    // Každých x sekund zavolat flask abych zkontroloval jestli je building / training done
+        function check_building_status() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/check_building_finish', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    for (var key in data) {
+                        var time_it_is_done = data[key];
+                        document.getElementById('info-'+key).innerHTML = "Building finished in: "+time_it_is_done;
+                    }
+                }
+            };
+            xhr.send();
+        }
+        check_building_status()
+        setInterval(check_building_status, 5000);
 
+
+        function update_resource_info() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/visual_resource_update', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    document.getElementById('coal-resource-info').innerHTML = data["coal"];
+                    document.getElementById('ore-resource-info').innerHTML = data["ore"];
+                    document.getElementById('energy-resource-info').innerHTML = data["energy"];
+                }
+            };
+            xhr.send();
+        }
+        update_resource_info()
+        setInterval(update_resource_info, 5000);
+
+</script>
 {% endblock %}

@@ -35,9 +35,17 @@ class BuildingManager:
             return True
         return False
     
-    # return data about active thing  
-    def check_building_status(self, city_id, type="mines"):
-        return self._collection.find_one({"city_id": city_id})["building"]
+    # if building is done return True, if it is not done return the time it should finish and what is building
+    def check_building_status(self, city_id):
+        current_datetime = datetime.utcnow()
+        building_stats = self._collection.find_one({"city_id": ObjectId(city_id)})["building"]
+        if building_stats["time_finish"] == None:
+            return False, 0
+        if building_stats["time_finish"] <= current_datetime:
+            self.finish_upgrade_building(city_id, building_stats["building_type"])
+            return True, 0
+        else:
+            return False, {building_stats["building_type"]:building_stats["time_finish"]}
     
     # Special version of check_building_status - it checks for status of training soldiers, 
     # update time_last_checked and give the right amount of soldiers to the city        
@@ -56,14 +64,14 @@ class BuildingManager:
             }
         })
     
+    def is_building_queue_empty(self, city_id):
+        queue = self._collection.find_one({"city_id": ObjectId(city_id)})
+        return (queue["building"]["building_type"] == None)
+
     # Add record of started upgrade
     # upgrade_time should look like this: upgrade_time = timedelta(hours=3, minutes=30, seconds=45)
     def start_upgrade_building(self, city_id, building_type, upgrade_time):
         current_datetime = datetime.utcnow()
-        print("WE GOT HERE AY")
-        print(city_id)
-        print(building_type)
-        print(upgrade_time)
         self.update_record(city_id, {
             "$set": {
                 "building.building_type": building_type,
@@ -72,10 +80,11 @@ class BuildingManager:
             }
         })
    
-   #Logic for upgrading the city building 
+   #Logic for upgrading the city building
     def finish_upgrade_building(self, city_id, building_type):
         # increase the building level value by 1
         if(building_type=="coal" or building_type=="ore" or building_type=="energy"):
+            print(f"updating level of {building_type}!")
             self._city_manager.update_city_record(city_id, {"$inc": {f"mine_levels.{building_type}": 1}})
         elif(building_type=="academy" or building_type=="machinery" or building_type=="specialists"):
             self._city_manager.update_city_record(city_id, {"$inc": {f"barracks_levels.{building_type}": 1}})
@@ -109,12 +118,13 @@ class BuildingManager:
         filter_criteria = {"city_id": ObjectId(city_id)}
         result = self._collection.update_one(filter_criteria, update_operation)
         if result.acknowledged:
-            print("Update successful!")
-            print(f"Matched {result.matched_count} document(s) and modified {result.modified_count} document(s).")
-            print(f"id filter crit. : {ObjectId(city_id)}")
-        else:
-            print("Update not acknowledged. Check your filter criteria.")
-            print(f"id filter crit. : {city_id}")
+            pass
+      #      print("Update successful!")
+      #      print(f"Matched {result.matched_count} document(s) and modified {result.modified_count} document(s).")
+      #      print(f"id filter crit. : {ObjectId(city_id)}")
+      #  else:
+       #     print("Update not acknowledged. filter bad probably lol")
+        #    print(f"id filter crit. : {city_id}")
     
     def load_collection(self, database):
         self._collection = database.get_collection(self._db_collection_name)

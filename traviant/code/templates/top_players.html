@@ -1,0 +1,26 @@
+{% extends "main_page_template.html" %}
+
+{% block subtitle %}
+Města
+{% endblock %}
+
+{% block main %}
+
+
+<h1>Top hráči</h1>
+
+<table>
+    <tr>
+        <th>Pozice</th>
+        <th>Jméno</th>
+        <th>Body</th>
+    </tr>
+    {% for player in player_list %}
+    <tr>
+        <th>{{player['login']}}</th>
+        <th>{{player['score']}}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

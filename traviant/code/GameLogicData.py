@@ -8,21 +8,42 @@ class GameLogicData:
                 "base_production_speed": 1,
                 "1": {
                     "cost_coal": 30,
-                    "cost_ore": 80,
-                    "cost_energy": 10, 
-                    "wait_time": timedelta(hours=0, minutes=1, seconds=20),
+                    "cost_ore": 10,
+                    "cost_energy": 0, 
+                    "wait_time": timedelta(hours=0, minutes=0, seconds=5),
                     "production_speed_bonus": 1
                 },
                 "2": {
-                    "cost_coal": 60,
-                    "cost_ore": 200,
-                    "cost_energy": 30, 
-                    "wait_time": timedelta(hours=0, minutes=2, seconds=50),
+                    "cost_coal": 50,
+                    "cost_ore": 10,
+                    "cost_energy": 0, 
+                    "wait_time": timedelta(hours=0, minutes=0, seconds=10),
                     "production_speed_bonus": 2
+                },
+                "3": {
+                    "cost_coal": 50,
+                    "cost_ore": 10,
+                    "cost_energy": 10, 
+                    "wait_time": timedelta(hours=0, minutes=1, seconds=5),
+                    "production_speed_bonus": 1
+                },
+                "4": {
+                    "cost_coal": 30,
+                    "cost_ore": 80,
+                    "cost_energy": 10, 
+                    "wait_time": timedelta(hours=0, minutes=10, seconds=5),
+                    "production_speed_bonus": 1
+                },
+                "5": {
+                    "cost_coal": 30,
+                    "cost_ore": 80,
+                    "cost_energy": 10, 
+                    "wait_time": timedelta(hours=0, minutes=10, seconds=5),
+                    "production_speed_bonus": 1
                 }
             },
             "ore": {
-                "base_time": 1,
+                "base_production_speed": 1,
                 "1": {
                     "cost_coal": 30,
                     "cost_ore": 80,
@@ -39,18 +60,18 @@ class GameLogicData:
                 }
             },
             "energy": {
-                "base_time": 1,
+                "base_production_speed": 1,
                 "1": {
                     "cost_coal": 30,
                     "cost_ore": 80,
-                    "cost_energy": 10, 
+                    "cost_energy": 0, 
                     "wait_time": timedelta(hours=0, minutes=1, seconds=20),
                     "production_speed_bonus": 1
                 },
                 "2": {
                     "cost_coal": 30,
                     "cost_ore": 80,
-                    "cost_energy": 10, 
+                    "cost_energy": 0, 
                     "wait_time": timedelta(hours=0, minutes=2, seconds=50),
                     "production_speed_bonus": 2
                 }
